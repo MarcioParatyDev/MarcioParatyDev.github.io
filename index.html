@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Márcio Junior | Desenvolvedor Full Stack & Engenheiro de Software</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -15,30 +16,12 @@
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
                         brand: {
-                            dark: '#050505',
-                            darker: '#000000',
-                            purple: '#8B5CF6',
-                            purpleHover: '#7C3AED',
-                            green: '#10B981',
-                            greenHover: '#059669',
-                            surface: 'rgba(255, 255, 255, 0.03)',
-                            border: 'rgba(255, 255, 255, 0.08)'
-                        }
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            base: '#050505',      
+                            surface: '#111111',   
+                            border: '#222222',    
+                            text: '#f8fafc',      
+                            subtext: '#94a3b8',   
+                            accent: '#ffffff',    
                         }
                     }
                 }
@@ -47,69 +30,19 @@
     </script>
     <style>
         body { 
-            background-color: #000000; 
+            background-color: #050505; 
             color: #f8fafc; 
             overflow-x: hidden; 
         }
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(139, 92, 246, 0.15);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #10B981, #8B5CF6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
 
-        #cursor, #cursor-ring {
-            display: none;
-        }
+        #cursor, #cursor-ring { display: none !important; }
 
-        @media (pointer: fine) {
-            body { cursor: none; }
-            a, button, input, select, textarea { cursor: none !important; }
-            
-            #cursor {
-                display: block;
-                position: fixed;
-                width: 8px; height: 8px;
-                background: #8B5CF6;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 10000;
-                transform: translate(-50%, -50%);
-                transition: transform 0.08s, width 0.2s, height 0.2s, background 0.2s;
-                mix-blend-mode: difference;
-            }
-            #cursor-ring {
-                display: block;
-                position: fixed;
-                width: 36px; height: 36px;
-                border: 1px solid rgba(139, 92, 246, 0.5);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9998;
-                transform: translate(-50%, -50%);
-                transition: all 0.18s ease;
-            }
-            body:has(a:hover) #cursor, body:has(button:hover) #cursor { 
-                width: 14px; height: 14px; background: #10B981; 
-            }
-            body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { 
-                width: 48px; height: 48px; border-color: rgba(16, 185, 129, 0.7); 
-            }
-        }
 
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal.visible {
             opacity: 1;
@@ -117,336 +50,267 @@
         }
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
 
-        .hero-entry {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: heroIn 1s cubic-bezier(0.22,1,0.36,1) forwards;
-        }
-        .hero-entry:nth-child(1) { animation-delay: 0.1s; }
-        .hero-entry:nth-child(2) { animation-delay: 0.3s; }
-        .hero-entry:nth-child(3) { animation-delay: 0.5s; }
-        .hero-entry:nth-child(4) { animation-delay: 0.7s; }
-        @keyframes heroIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
 
-        .ticker-wrap {
-            overflow: hidden;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            height: 50px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            z-index: 20;
+        .bento-card {
+            background: linear-gradient(145deg, #111111 0%, #0a0a0a 100%);
+            border: 1px solid #222222;
+            transition: all 0.3s ease;
         }
-        .ticker-track {
-            display: flex;
-            gap: 0;
-            animation: ticker 30s linear infinite;
-            white-space: nowrap;
-        }
-        .ticker-track span {
-            display: inline-flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 0 2.5rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #8B5CF6;
-        }
-        .ticker-track span::after {
-            content: '◆';
-            font-size: 0.4rem;
-            color: #10B981;
-        }
-        @keyframes ticker {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        .bento-card:hover {
+            border-color: #444444;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-purple selection:text-white relative">
+<body class="antialiased selection:bg-white selection:text-black">
 
     <div id="cursor"></div>
     <div id="cursor-ring"></div>
 
-    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-purple rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-blob"></div>
-        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-brand-green rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-1/2 w-96 h-96 bg-brand-purple rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-blob animation-delay-4000"></div>
-    </div>
-
-    <nav class="fixed w-full z-50 glass-panel border-b border-white/5 transition-all py-4 px-6 md:px-12">
+    <nav class="fixed w-full z-50 bg-[#050505]/80 backdrop-blur-md border-b border-brand-border transition-all py-4 px-6 md:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 group">
-                <img src="./Captura_de_tela_2026-02-28_165425-removebg-preview.png" alt="MJ Web Designer" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-md">
-                <span class="text-xl font-black tracking-tighter hidden sm:block">Márcio<span class="text-white/50">Junior</span></span>
+                <span class="text-xl font-extrabold tracking-tight text-white">Márcio<span class="text-slate-500 font-medium">Junior</span></span>
             </a>
-            <div class="hidden md:flex gap-8 text-sm font-bold text-slate-300 uppercase tracking-widest">
-                <a href="#sobre" class="hover:text-brand-green transition-colors">Sobre</a>
-                <a href="#skills" class="hover:text-brand-purple transition-colors">Skills</a>
+            <div class="hidden md:flex gap-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                <a href="#sobre" class="hover:text-white transition-colors">Sobre & Skills</a>
                 <a href="#projetos" class="hover:text-white transition-colors">Projetos</a>
             </div>
-            <a href="#contato" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-black uppercase tracking-widest transition-all hover:scale-105 backdrop-blur-md">
+            <a href="#contato" class="px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold uppercase tracking-widest transition-all hover:bg-slate-200 hover:scale-105">
                 Contato
             </a>
         </div>
     </nav>
 
-    <section class="relative z-10 min-h-screen flex flex-col justify-center pt-20">
-        <div class="max-w-4xl mx-auto text-center px-6 flex-1 flex flex-col justify-center animate-float">
+    <section class="relative z-10 min-h-[90vh] flex flex-col justify-center pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col items-start">
             
-            <div class="hero-entry inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border-brand-green/30 text-brand-green text-xs font-bold uppercase tracking-widest mb-6 mx-auto">
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#111] border border-[#333] text-slate-300 text-[10px] font-bold uppercase tracking-widest mb-8">
                 <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 Disponível para Projetos
             </div>
             
-            <h1 class="hero-entry text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-tight">
-                Design Gráfico, Infraestrutura & <br />
-                <span class="text-gradient">Engenharia de Software.</span>
+            <h1 class="reveal delay-100 text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white mb-6 leading-[1.05] max-w-5xl">
+                Design Gráfico,<br/>
+                Infraestrutura &<br/>
+                <span class="text-slate-500">Engenharia de Software.</span>
             </h1>
             
-            <p class="hero-entry text-slate-400 text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p class="reveal delay-200 text-brand-subtext text-lg md:text-xl font-medium mb-12 max-w-2xl leading-relaxed">
                 Mais de 20 anos construindo a base da tecnologia. Hoje, unindo a estética do Design à robustez do Back-end com Node.js e PostgreSQL para criar arquiteturas de ponta.
             </p>
 
-            <div class="hero-entry flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projetos" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-purple hover:bg-brand-purpleHover text-white font-black uppercase tracking-widest text-xs transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] flex items-center justify-center gap-2">
-                    Explorar Portfólio <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
-                </a>
-                <a href="https://wa.me/5521983193801" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-white/10 text-white font-black uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2">
+            <div class="reveal delay-200 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="https://wa.me/5521983193801" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-bold uppercase tracking-widest text-xs transition-all hover:bg-slate-200 hover:scale-105 flex items-center justify-center gap-2">
                     <i data-lucide="message-square" class="w-4 h-4"></i> Vamos Conversar
                 </a>
-            </div>
-        </div>
-
-        <div class="ticker-wrap mt-10">
-            <div class="ticker-track">
-                <span>Node.js</span>
-                <span>PostgreSQL</span>
-                <span>Full Stack</span>
-                <span>Design Gráfico</span>
-                <span>Infraestrutura</span>
-                <span>Express</span>
-                <span>REST APIs</span>
-                <span>Tailwind CSS</span>
-                <span>Moodle</span>
-                <span>Deploy & DevOps</span>
-                <span>PWA</span>
-                <span>Redes Mikrotik</span>
-                <span>SaaS</span>
-                <span>Node.js</span>
-                <span>PostgreSQL</span>
-                <span>Full Stack</span>
-                <span>Design Gráfico</span>
-                <span>Infraestrutura</span>
-                <span>Express</span>
-                <span>REST APIs</span>
-                <span>Tailwind CSS</span>
-                <span>Moodle</span>
-                <span>Deploy & DevOps</span>
-                <span>PWA</span>
-                <span>Redes Mikrotik</span>
-                <span>SaaS</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="relative z-10 py-24 px-6 border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-6">
-                    <h2 class="reveal text-3xl md:text-4xl font-black tracking-tighter">O Full Stack que entende <br><span class="text-brand-purple">a máquina por dentro.</span></h2>
-                    <p class="reveal delay-100 text-slate-400 leading-relaxed">
-                        Diferente da maioria dos desenvolvedores, minha fundação não começou apenas no código. Começou montando servidores, administrando redes Mikrotik e prestando suporte vital para empresas.
-                    </p>
-                    <p class="reveal delay-200 text-slate-400 leading-relaxed">
-                        Com formação em <strong>Design Gráfico</strong> e especializações em <strong>Desenvolvimento Full Stack</strong> e <strong>Engenharia de Software</strong>, eu não apenas programo: eu desenho experiências de usuário imersivas e arquiteturas de banco de dados à prova de falhas.
-                    </p>
-                    
-                    <div class="reveal delay-300 pt-4 flex gap-4">
-                        <div class="glass-panel p-4 rounded-2xl border-l-2 border-l-brand-green flex-1">
-                            <h4 class="text-3xl font-black text-white">20+</h4>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Anos em TI & Infra</p>
-                        </div>
-                        <div class="glass-panel p-4 rounded-2xl border-l-2 border-l-brand-purple flex-1">
-                            <h4 class="text-3xl font-black text-white">100%</h4>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Foco em Soluções</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="skills" class="grid grid-cols-2 gap-4">
-                    <div class="reveal glass-panel p-6 rounded-3xl group hover:border-brand-green/50 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-brand-green/20 text-brand-green flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="server" class="w-6 h-6"></i></div>
-                        <h3 class="font-black text-white mb-1">Back-end</h3>
-                        <p class="text-xs text-slate-400 font-medium">Node.js, Express, APIs RESTful, JWT, Bcrypt.</p>
-                    </div>
-                    <div class="reveal delay-100 glass-panel p-6 rounded-3xl group hover:border-brand-purple/50 transition-colors mt-8">
-                        <div class="w-12 h-12 rounded-xl bg-brand-purple/20 text-brand-purple flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="database" class="w-6 h-6"></i></div>
-                        <h3 class="font-black text-white mb-1">Database</h3>
-                        <p class="text-xs text-slate-400 font-medium">PostgreSQL avançado, Modelagem Relacional.</p>
-                    </div>
-                    <div class="reveal delay-200 glass-panel p-6 rounded-3xl group hover:border-brand-purple/50 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-brand-purple/20 text-brand-purple flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="layout" class="w-6 h-6"></i></div>
-                        <h3 class="font-black text-white mb-1">Front-end & UI</h3>
-                        <p class="text-xs text-slate-400 font-medium">Javascript, Tailwind CSS, EJS, PWA, Design Gráfico.</p>
-                    </div>
-                    <div class="reveal delay-300 glass-panel p-6 rounded-3xl group hover:border-brand-green/50 transition-colors mt-8">
-                        <div class="w-12 h-12 rounded-xl bg-brand-green/20 text-brand-green flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><i data-lucide="network" class="w-6 h-6"></i></div>
-                        <h3 class="font-black text-white mb-1">Infra & Deploy</h3>
-                        <p class="text-xs text-slate-400 font-medium">Render, Servidores, Redes, Integração Contínua.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projetos" class="relative z-10 py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="reveal text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black tracking-tighter mb-4">Projetos em <span class="text-brand-green">Destaque</span></h2>
-                <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">Sistemas desenvolvidos do zero, cobrindo desde a arquitetura do banco de dados até a experiência final do usuário.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <a href="https://lanchesderua.com.br" target="_blank" class="reveal glass-panel block rounded-[2.5rem] p-2 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(139,92,246,0.15)] transition-all duration-300 group">
-                    <div class="bg-gradient-to-br from-slate-900 to-black rounded-[2rem] p-8 h-full border border-white/5 relative overflow-hidden flex flex-col">
-                        <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity"><i data-lucide="map-pin" class="w-32 h-32 text-brand-purple"></i></div>
-                        <div class="absolute bottom-8 right-8 text-white/10 group-hover:text-brand-green transition-colors"><i data-lucide="external-link" class="w-6 h-6"></i></div>
-                        
-                        <div class="flex gap-2 mb-6 relative z-10">
-                            <span class="px-3 py-1 bg-brand-purple/20 text-brand-purple text-[9px] font-black uppercase tracking-widest rounded-full">SaaS</span>
-                            <span class="px-3 py-1 bg-brand-green/20 text-brand-green text-[9px] font-black uppercase tracking-widest rounded-full">PWA</span>
-                        </div>
-                        
-                        <h3 class="text-2xl font-black text-white mb-3 relative z-10">Lanches de Rua</h3>
-                        <p class="text-slate-400 text-sm mb-8 relative z-10 leading-relaxed flex-grow">Uma plataforma completa (SaaS) que conecta vendedores de comida de rua a clientes. Possui geolocalização por satélite, sistema de assinaturas integrado ao Mercado Pago, motor de e-mails blindado e painel de gestão em tempo real.</p>
-                        
-                        <div class="flex flex-wrap gap-2 relative z-10">
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Node.js</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">PostgreSQL</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Tailwind</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Resend</span>
-                        </div>
-                    </div>
+                <a href="#" class="w-full sm:w-auto px-6 py-4 rounded-full text-slate-400 hover:text-white hover:bg-white/5 font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i> Baixar CV
                 </a>
+            </div>
+        </div>
+    </section>
 
-                <a href="https://sispat.otss.app.br" target="_blank" class="reveal delay-100 glass-panel block rounded-[2.5rem] p-2 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all duration-300 group">
-                    <div class="bg-gradient-to-br from-slate-900 to-black rounded-[2rem] p-8 h-full border border-white/5 relative overflow-hidden flex flex-col">
-                        <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity"><i data-lucide="package" class="w-32 h-32 text-brand-green"></i></div>
-                        <div class="absolute bottom-8 right-8 text-white/10 group-hover:text-brand-green transition-colors"><i data-lucide="external-link" class="w-6 h-6"></i></div>
-                        
-                        <div class="flex gap-2 mb-6 relative z-10">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-[9px] font-black uppercase tracking-widest rounded-full">Gestão</span>
-                            <span class="px-3 py-1 bg-brand-green/20 text-brand-green text-[9px] font-black uppercase tracking-widest rounded-full">Corporativo</span>
+    <section id="sobre" class="relative py-24 px-6 border-t border-brand-border bg-[#020202]">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">A máquina por dentro.</h2>
+                <p class="text-brand-subtext mt-4 max-w-2xl">Diferente da maioria, minha fundação não começou apenas no código. Começou em servidores e redes, evoluindo para arquiteturas completas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="reveal bento-card md:col-span-2 rounded-3xl p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <i data-lucide="terminal" class="w-8 h-8 text-slate-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Background Sólido</h3>
+                        <p class="text-brand-subtext leading-relaxed mb-6 text-lg">
+                            Com formação em <strong>Design Gráfico</strong> e especializações em <strong>Desenvolvimento Full Stack</strong> e <strong>Engenharia de Software</strong>, eu não apenas programo: eu desenho experiências imersivas e estruturo bancos de dados à prova de falhas.
+                        </p>
+                    </div>
+                    <div class="flex gap-8 border-t border-[#222] pt-6 mt-auto">
+                        <div>
+                            <h4 class="text-4xl font-extrabold text-white">20+</h4>
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Anos em TI & Infra</p>
                         </div>
-                        
-                        <h3 class="text-2xl font-black text-white mb-3 relative z-10">SisPat</h3>
-                        <p class="text-slate-400 text-sm mb-8 relative z-10 leading-relaxed flex-grow">Sistema robusto para gestão patrimonial e controle de ativos. Arquitetura focada em segurança, controle de acesso corporativo e implantação eficiente em servidores na nuvem, garantindo alta disponibilidade.</p>
-                        
-                        <div class="flex flex-wrap gap-2 relative z-10">
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Full Stack</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Deploy</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Infra</span>
+                        <div>
+                            <h4 class="text-4xl font-extrabold text-white">100%</h4>
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Foco em Soluções</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                 <a href="https://otssead.fiocruz.br/moodle" target="_blank" class="reveal delay-200 glass-panel block rounded-[2.5rem] p-2 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-300 group">
-                    <div class="bg-gradient-to-br from-slate-900 to-black rounded-[2rem] p-8 h-full border border-white/5 relative overflow-hidden flex flex-col">
-                        <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity"><i data-lucide="graduation-cap" class="w-32 h-32 text-blue-500"></i></div>
-                        <div class="absolute bottom-8 right-8 text-white/10 group-hover:text-brand-green transition-colors"><i data-lucide="external-link" class="w-6 h-6"></i></div>
-                        
-                        <div class="flex gap-2 mb-6 relative z-10">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-[9px] font-black uppercase tracking-widest rounded-full">EAD</span>
-                            <span class="px-3 py-1 bg-brand-green/20 text-brand-green text-[9px] font-black uppercase tracking-widest rounded-full">Institucional</span>
-                        </div>
-                        
-                        <h3 class="text-2xl font-black text-white mb-3 relative z-10">Portal Saberes Digitais</h3>
-                        <p class="text-slate-400 text-sm mb-8 relative z-10 leading-relaxed flex-grow">Plataforma de educação a distância institucional desenvolvida para o OTSS/Fiocruz. Baseada na arquitetura do Moodle v5.0, com personalização avançada de interface e gestão estruturada de ensino e cursos.</p>
-                        
-                        <div class="flex flex-wrap gap-2 relative z-10">
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Moodle v5.0</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">PHP</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">LMS</span>
-                        </div>
+                <div class="reveal delay-100 bento-card rounded-3xl p-8 flex flex-col">
+                    <div class="w-12 h-12 rounded-xl bg-[#1a1a1a] border border-[#333] flex items-center justify-center mb-6">
+                        <i data-lucide="server" class="w-6 h-6 text-slate-300"></i>
                     </div>
-                </a>
+                    <h3 class="font-bold text-white mb-2 text-xl">Back-end</h3>
+                    <p class="text-sm text-brand-subtext">Node.js, Express, APIs RESTful, JWT, Bcrypt.</p>
+                </div>
 
-                <a href="https://github.com/MarcioParatyDev/otta" target="_blank" class="reveal delay-300 glass-panel block rounded-[2.5rem] p-2 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] transition-all duration-300 group">
-                    <div class="bg-gradient-to-br from-slate-900 to-black rounded-[2rem] p-8 h-full border border-white/5 relative overflow-hidden flex flex-col">
-                        <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity"><i data-lucide="file-signature" class="w-32 h-32 text-amber-500"></i></div>
-                        <div class="absolute bottom-8 right-8 text-white/10 group-hover:text-amber-500 transition-colors"><i data-lucide="github" class="w-6 h-6"></i></div>
-                        
-                        <div class="flex gap-2 mb-6 relative z-10">
-                            <span class="px-3 py-1 bg-amber-500/20 text-amber-400 text-[9px] font-black uppercase tracking-widest rounded-full">Automação</span>
-                            <span class="px-3 py-1 bg-brand-green/20 text-brand-green text-[9px] font-black uppercase tracking-widest rounded-full">Open Source</span>
-                        </div>
-                        
-                        <h3 class="text-2xl font-black text-white mb-3 relative z-10">Sistema OTTA</h3>
-                        <p class="text-slate-400 text-sm mb-8 relative z-10 leading-relaxed flex-grow">Plataforma para gestão e emissão automatizada de ofícios institucionais. Integra motor avançado para geração de PDFs com Puppeteer, leitura de documentos via OCR (Tesseract.js) e validação de autenticidade por QR Code.</p>
-                        
-                        <div class="flex flex-wrap gap-2 relative z-10">
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Node.js</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">PostgreSQL</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Puppeteer</span>
-                            <span class="text-[10px] font-bold text-slate-500 border border-slate-700 px-2 py-1 rounded-md">Tesseract.js</span>
-                        </div>
+                <div class="reveal bento-card rounded-3xl p-8 flex flex-col">
+                    <div class="w-12 h-12 rounded-xl bg-[#1a1a1a] border border-[#333] flex items-center justify-center mb-6">
+                        <i data-lucide="database" class="w-6 h-6 text-slate-300"></i>
                     </div>
-                </a>
+                    <h3 class="font-bold text-white mb-2 text-xl">Database</h3>
+                    <p class="text-sm text-brand-subtext">PostgreSQL avançado, Modelagem Relacional.</p>
+                </div>
 
-                <div class="reveal delay-400 glass-panel rounded-[2.5rem] p-2 hover:-translate-y-2 transition-transform duration-300 group">
-                    <div class="bg-gradient-to-br from-slate-900 to-black rounded-[2rem] p-8 h-full border border-dashed border-white/10 relative overflow-hidden flex flex-col items-center justify-center text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 text-slate-500"><i data-lucide="smartphone" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-black text-white mb-2">Desenvolvimento Mobile</h3>
-                        <p class="text-slate-500 text-sm">Próximos passos da carreira: Aplicações nativas para iOS e Android.</p>
+                <div class="reveal delay-100 bento-card rounded-3xl p-8 flex flex-col">
+                    <div class="w-12 h-12 rounded-xl bg-[#1a1a1a] border border-[#333] flex items-center justify-center mb-6">
+                        <i data-lucide="layout" class="w-6 h-6 text-slate-300"></i>
                     </div>
+                    <h3 class="font-bold text-white mb-2 text-xl">Front-end & UI</h3>
+                    <p class="text-sm text-brand-subtext">Javascript, Tailwind CSS, EJS, PWA, Design Gráfico.</p>
+                </div>
+
+                <div class="reveal delay-200 bento-card rounded-3xl p-8 flex flex-col">
+                    <div class="w-12 h-12 rounded-xl bg-[#1a1a1a] border border-[#333] flex items-center justify-center mb-6">
+                        <i data-lucide="network" class="w-6 h-6 text-slate-300"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-xl">Infra & Deploy</h3>
+                    <p class="text-sm text-brand-subtext">Render, Servidores, Redes, Integração Contínua.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <footer id="contato" class="relative z-10 border-t border-white/5 bg-black pt-20 pb-10 px-6">
+    <section id="projetos" class="relative py-24 px-6 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="reveal mb-16 max-w-2xl">
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">Projetos em Destaque</h2>
+                <p class="text-brand-subtext text-lg">
+                    Sistemas desenvolvidos do zero, cobrindo da arquitetura de banco de dados à experiência final do usuário.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <a href="https://lanchesderua.com.br" target="_blank" class="reveal group bento-card rounded-3xl p-8 lg:p-10 flex flex-col">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">SaaS</span>
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">PWA</span>
+                        </div>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4">Lanches de Rua</h3>
+                    <p class="text-brand-subtext text-sm mb-8 leading-relaxed flex-grow">
+                        Plataforma completa (SaaS) conectando vendedores de rua a clientes. Geolocalização por satélite, assinaturas integradas ao Mercado Pago, motor de e-mails blindado e painel de gestão em tempo real.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Node.js</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">PostgreSQL</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Tailwind</span>
+                    </div>
+                </a>
+
+                <a href="https://sispat.otss.app.br" target="_blank" class="reveal delay-100 group bento-card rounded-3xl p-8 lg:p-10 flex flex-col">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">Gestão</span>
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">Corporativo</span>
+                        </div>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4">SisPat</h3>
+                    <p class="text-brand-subtext text-sm mb-8 leading-relaxed flex-grow">
+                        Sistema robusto para gestão patrimonial e controle de ativos. Arquitetura focada em segurança, controle de acesso corporativo e implantação eficiente em servidores na nuvem, garantindo alta disponibilidade.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Full Stack</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Deploy</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Infra</span>
+                    </div>
+                </a>
+
+                <a href="https://otssead.fiocruz.br/moodle" target="_blank" class="reveal group bento-card rounded-3xl p-8 lg:p-10 flex flex-col">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">EAD</span>
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">Institucional</span>
+                        </div>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4">Portal Saberes Digitais</h3>
+                    <p class="text-brand-subtext text-sm mb-8 leading-relaxed flex-grow">
+                        Plataforma de educação a distância institucional desenvolvida para o OTSS/Fiocruz. Baseada na arquitetura do Moodle v5.0, com personalização avançada de interface e gestão estruturada de ensino.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Moodle v5.0</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">PHP</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">LMS</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/MarcioParatyDev/otta" target="_blank" class="reveal delay-100 group bento-card rounded-3xl p-8 lg:p-10 flex flex-col">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">Automação</span>
+                            <span class="px-3 py-1 bg-[#222] text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full">Open Source</span>
+                        </div>
+                        <i data-lucide="github" class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4">Sistema OTTA</h3>
+                    <p class="text-brand-subtext text-sm mb-8 leading-relaxed flex-grow">
+                        Plataforma para gestão e emissão automatizada de ofícios institucionais. Integra motor avançado para geração de PDFs com Puppeteer, leitura de documentos via OCR (Tesseract.js) e validação de autenticidade por QR Code.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Node.js</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">PostgreSQL</span>
+                        <span class="text-[11px] font-bold text-slate-400 border border-[#333] px-3 py-1.5 rounded-lg">Puppeteer</span>
+                    </div>
+                </a>
+
+                <div class="reveal md:col-span-2 flex flex-col items-center justify-center text-center bento-card rounded-3xl p-8 lg:p-10 mt-2">
+                    <div class="w-16 h-16 rounded-2xl bg-[#111] border border-[#333] flex items-center justify-center mb-6 text-slate-400">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Desenvolvimento Mobile</h3>
+                    <p class="text-brand-subtext text-sm max-w-sm mx-auto">
+                        Próximos passos da carreira: Transição de aplicações web progressivas (PWA) para nativas (iOS e Android).
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="relative z-10 bg-[#020202] border-t border-brand-border pt-24 pb-12 px-6">
         <div class="max-w-4xl mx-auto text-center">
             
-            <img src="./Captura_de_tela_2026-02-28_165425-removebg-preview.png" alt="MJ Web Designer" class="reveal h-16 w-auto object-contain mx-auto mb-10 opacity-80 hover:opacity-100 transition-opacity drop-shadow-lg">
-
-            <h2 class="reveal delay-100 text-3xl font-black tracking-tighter mb-6">Pronto para o próximo nível?</h2>
-            <p class="reveal delay-200 text-slate-400 mb-10 text-sm">Seja para desenvolver um SaaS robusto, configurar uma infraestrutura de ponta ou desenhar uma marca, estou à disposição.</p>
+            <h2 class="reveal text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-6">Pronto para o próximo nível?</h2>
+            <p class="reveal delay-100 text-brand-subtext mb-12 text-lg max-w-lg mx-auto">
+                Seja para desenvolver um SaaS robusto, configurar uma infraestrutura de ponta ou desenhar uma marca, estou à disposição.
+            </p>
             
-            <div class="reveal delay-300 flex flex-wrap justify-center gap-4 mb-16">
-            <a href="https://wa.me/5521983193801" target="_blank" class="px-6 py-4 rounded-2xl glass-panel hover:bg-brand-green/10 hover:border-brand-green/30 text-white font-bold transition-all flex items-center gap-3">
-                <i data-lucide="phone" class="w-5 h-5 text-brand-green"></i> WhatsApp
-            </a>
-            <a href="mailto:mrogerio87@hotmail.com" class="px-6 py-4 rounded-2xl glass-panel hover:bg-brand-purple/10 hover:border-brand-purple/30 text-white font-bold transition-all flex items-center gap-3">
-                <i data-lucide="mail" class="w-5 h-5 text-brand-purple"></i> E-mail
-            </a>
-            <a href="https://linkedin.com/in/mrpsjr" target="_blank" class="px-6 py-4 rounded-2xl glass-panel hover:bg-blue-500/10 hover:border-blue-500/30 text-white font-bold transition-all flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-400"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                LinkedIn
-            </a>
-            <a href="https://github.com/MarcioParatyDev" target="_blank" class="px-6 py-4 rounded-2xl glass-panel hover:bg-white/10 hover:border-white/30 text-white font-bold transition-all flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-slate-300"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                GitHub
-            </a>
-        </div>
+            <div class="reveal delay-200 flex flex-wrap justify-center gap-4 mb-20">
+                <a href="https://wa.me/5521983193801" target="_blank" class="px-6 py-4 rounded-xl bento-card text-white font-bold transition-all flex items-center gap-3">
+                    <i data-lucide="phone" class="w-5 h-5 text-slate-400"></i> WhatsApp
+                </a>
+                <a href="mailto:mrogerio87@hotmail.com" class="px-6 py-4 rounded-xl bento-card text-white font-bold transition-all flex items-center gap-3">
+                    <i data-lucide="mail" class="w-5 h-5 text-slate-400"></i> E-mail
+                </a>
+                <a href="https://linkedin.com/in/mrpsjr" target="_blank" class="px-6 py-4 rounded-xl bento-card text-white font-bold transition-all flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/MarcioParatyDev" target="_blank" class="px-6 py-4 rounded-xl bento-card text-white font-bold transition-all flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    GitHub
+                </a>
+            </div>
 
-            <div class="border-t border-white/5 pt-8 flex flex-col text-[10px] font-bold text-slate-600 uppercase tracking-widest">
+            <div class="border-t border-[#222] pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-bold text-slate-600 uppercase tracking-widest gap-4">
                 <p>&copy; 2026 Márcio Junior</p>
                 <p>Todos os direitos reservados. Desenvolvido em Paraty, RJ</p>
             </div>
@@ -463,15 +327,13 @@
 
             document.addEventListener('mousemove', e => {
                 mx = e.clientX; my = e.clientY;
-                cursor.style.left = mx + 'px';
-                cursor.style.top = my + 'px';
+                if(cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
             });
 
             function animRing() {
                 rx += (mx - rx) * 0.12;
                 ry += (my - ry) * 0.12;
-                ring.style.left = rx + 'px';
-                ring.style.top = ry + 'px';
+                if(ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
                 requestAnimationFrame(animRing);
             }
             animRing();
